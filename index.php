@@ -1,4 +1,5 @@
-<?php include_once __DIR__ . "/hotels.php" ?>
+<?php include_once __DIR__ . "/hotels.php" 
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -15,6 +16,15 @@
     </header>
     <main>
         <div class="container">
+            <div class="mb-3 text-white">
+                <form action="./index.php" method="GET" class="d-flex align-items-center">
+                    <div>
+                        <label for="parkingNeed" class="me-2">Necessità di parcheggio</label>
+                        <input type="text" name="parkingNeed" id="parkingNeed">
+                    </div>
+                    <button type="submit" class="btn btn-light ms-auto">Filtra</button>
+                </form>
+            </div>
             <table class="table table-hover text-center">
                 <thead class="table-success" >
                     <tr>
@@ -27,7 +37,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($hotels as $key => $hotel) { ?>
+                    <?php foreach ($refArray as $key => $hotel) { ?>
                         <tr class=" <?php echo ($key % 2 === 0) ?  "table-light" : "table-success" ?> ">
                         <th scope="row"> <?php echo $key + 1 ?> </th>
                         <td class="fw-bold" > <?php echo $hotel["name"]; ?> </td>

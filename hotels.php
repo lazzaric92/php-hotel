@@ -36,4 +36,20 @@
             'distance_to_center' => 50
         ],
     ];
+
+    $_GET['parkingNeed'] = isset($_GET['parkingNeed']) ? $_GET['parkingNeed'] : ""; 
+    $parkingNeed = trim(lcfirst($_GET['parkingNeed']));
+    
+    // $parkingAvailable = [];
+    $parkingAvailableArray = array_filter($hotels, function ($hotel) {
+        return ($hotel["parking"] === true);
+    });
+
+    $refArray = "";
+    if($parkingNeed === "sì" || $parkingNeed === "si"){
+        $refArray = $parkingAvailableArray;
+    } else {
+        $refArray = $hotels;
+    }
+
 ?>
