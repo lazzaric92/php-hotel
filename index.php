@@ -18,9 +18,13 @@
         <div class="container">
             <div class="mb-3 text-white">
                 <form action="./index.php" method="GET" class="d-flex align-items-center">
-                    <div>
+                    <div class="me-3">
                         <label for="parkingNeed" class="me-2">Necessità di parcheggio</label>
                         <input type="text" name="parkingNeed" id="parkingNeed">
+                    </div>
+                    <div>
+                        <label for="hotelVote" class="me-2">Voto minimo (0 - 5)</label>
+                        <input type="text" name="hotelVote" id="hotelVote">
                     </div>
                     <button type="submit" class="btn btn-light ms-auto">Filtra</button>
                 </form>

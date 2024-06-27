@@ -39,17 +39,29 @@
 
     $_GET['parkingNeed'] = isset($_GET['parkingNeed']) ? $_GET['parkingNeed'] : ""; 
     $parkingNeed = trim(lcfirst($_GET['parkingNeed']));
+
+    $_GET['hotelVote'] = isset($_GET['hotelVote']) ? $_GET['hotelVote'] : "";
+    $hotelVote = trim($_GET['hotelVote']);
     
-    // $parkingAvailable = [];
-    $parkingAvailableArray = array_filter($hotels, function ($hotel) {
-        return ($hotel["parking"] === true);
+    $filteredByVote = array_filter($hotels, function ($hotel) {
+        $hotelVote = trim($_GET['hotelVote']);
+        return ($hotel["vote"] >= $hotelVote);
     });
 
     $refArray = "";
-    if($parkingNeed === "sì" || $parkingNeed === "si"){
-        $refArray = $parkingAvailableArray;
+    if (is_numeric($hotelVote) && $hotelVote >= 0 && $hotelVote <= 5) {
+        $refArray = $filteredByVote;
     } else {
         $refArray = $hotels;
-    }
+    }; 
+
+    
+    if($parkingNeed === "sì" || $parkingNeed === "si"){
+        $refArray = array_filter($refArray, function ($hotel) {
+            return ($hotel["parking"] === true);
+        });
+    };
+
+
 
 ?>
