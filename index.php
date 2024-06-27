@@ -1,3 +1,5 @@
+<?php include_once __DIR__ . "/hotels.php" ?>
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -8,6 +10,19 @@
     <title>PHP Hotel</title>
 </head>
 <body>
-    
+    <main>
+        <h1>I nostri Hotel</h1>
+        <ul>
+            <?php foreach ($hotels as $hotel) { ?>
+                <li>
+                    <h2> <?php echo $hotel["name"]; ?> </h2>
+                    <p> <?php echo $hotel["description"]; ?> </p>
+                    <p> Distanza dal centro: <?php echo $hotel["distance_to_center"]; ?> km</p>
+                    <p> Disponibilità di parcheggio: <?php echo $hotel["parking"] ?  "Sì" : "No"; ?> </p>
+                    <p> Voto: <?php echo $hotel["vote"]; ?> </p>
+                </li>
+            <?php }; ?>
+        </ul>
+    </main>
 </body>
 </html>
