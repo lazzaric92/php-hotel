@@ -10,19 +10,36 @@
     <title>PHP Hotel</title>
 </head>
 <body>
-    <main>
+    <header class="text-center text-white p-2 mb-3">
         <h1>I nostri Hotel</h1>
-        <ul>
-            <?php foreach ($hotels as $hotel) { ?>
-                <li>
-                    <h2> <?php echo $hotel["name"]; ?> </h2>
-                    <p> <?php echo $hotel["description"]; ?> </p>
-                    <p> Distanza dal centro: <?php echo $hotel["distance_to_center"]; ?> km</p>
-                    <p> Disponibilità di parcheggio: <?php echo $hotel["parking"] ?  "Sì" : "No"; ?> </p>
-                    <p> Voto: <?php echo $hotel["vote"]; ?> </p>
-                </li>
-            <?php }; ?>
-        </ul>
+    </header>
+    <main>
+        <div class="container">
+            <table class="table table-hover text-center">
+                <thead class="table-success" >
+                    <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Parcheggio</th>
+                    <th scope="col">Voto</th>
+                    <th scope="col">Distanza dal centro</th>
+                    <th colspan="2">Descrizione</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($hotels as $key => $hotel) { ?>
+                        <tr class=" <?php echo ($key % 2 === 0) ?  "table-light" : "table-success" ?> ">
+                        <th scope="row"> <?php echo $key + 1 ?> </th>
+                        <td class="fw-bold" > <?php echo $hotel["name"]; ?> </td>
+                        <td> <?php echo $hotel["parking"] ?  "Sì" : "No"; ?> </td>
+                        <td> <?php echo $hotel["vote"]; ?> </td>
+                        <td> <?php echo $hotel["distance_to_center"]; ?> km </td>
+                        <td> <?php echo $hotel["description"]; ?> </td>
+                        </tr>
+                    <?php }; ?>
+                </tbody>
+            </table>
+        </div>
     </main>
 </body>
 </html>
