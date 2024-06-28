@@ -20,11 +20,14 @@
                 <form action="./index.php" method="GET" class="d-flex align-items-center">
                     <div class="me-3">
                         <label for="parkingNeed" class="me-2">Necessità di parcheggio</label>
-                        <input type="text" name="parkingNeed" id="parkingNeed">
+                        <select name="parkingNeed" id="parkingNeed">
+                            <option value="">No</option>
+                            <option value="1">Sì</option>
+                        </select>
                     </div>
                     <div>
                         <label for="hotelVote" class="me-2">Voto minimo (0 - 5)</label>
-                        <input type="text" name="hotelVote" id="hotelVote">
+                        <input type="number" name="hotelVote" id="hotelVote" min="0" max="5">
                     </div>
                     <button type="submit" class="btn btn-light ms-auto">Filtra</button>
                 </form>

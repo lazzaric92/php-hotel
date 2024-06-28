@@ -38,7 +38,7 @@
     ];
 
     $_GET['parkingNeed'] = isset($_GET['parkingNeed']) ? $_GET['parkingNeed'] : ""; 
-    $parkingNeed = trim(lcfirst($_GET['parkingNeed']));
+    $parkingNeed = $_GET['parkingNeed'];
 
     $_GET['hotelVote'] = isset($_GET['hotelVote']) ? $_GET['hotelVote'] : "";
     $hotelVote = trim($_GET['hotelVote']);
@@ -56,7 +56,7 @@
     }; 
 
     
-    if($parkingNeed === "sì" || $parkingNeed === "si"){
+    if($parkingNeed == 1){
         $refArray = array_filter($refArray, function ($hotel) {
             return ($hotel["parking"] === true);
         });
